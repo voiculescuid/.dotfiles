@@ -1,0 +1,55 @@
+[alias]
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# Show the diff between the latest commit and the current state.
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+	# View the current working tree status using the short format
+	s = status -s
+
+	# Amend the currently staged files to the latest commit.
+	amend = commit --amend --reuse-message=HEAD
+
+	# Commit all changes
+	ca = !git add -A && git commit -av
+
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+	# Show the user email for the current repository.
+	whoami = config user.email
+
+[diff]
+	# Set vscode as difftool
+	tool = vscode
+  
+[difftool "vscode"]
+	# Set command for comparation
+	cmd = code --wait --diff $LOCAL $REMOTE
+  
+[merge]
+	# Set vscode as mergetool
+	tool = vscode
+
+[mergetool "vscode"]
+	# Set command for merge
+	cmd = code --wait $MERGED
+
+[apply]
+	# Detect whitespace errors when applying a patch.
+	whitespace = fix
+
+[branch]
+	# Show most recently changed branches first.
+	sort = -committerdate
+
+[core]
+	editor = code --wait
+
+[user]
+	name = Voiculescu Ion-Daniel
+	email = 44754843+voiculescuid@users.noreply.github.com

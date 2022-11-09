@@ -1,0 +1,14 @@
+# Compiled Python files
+*.pyc
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# NPM
+/node_modules/
+
+# General
+/tmp
+.env
+.git/
